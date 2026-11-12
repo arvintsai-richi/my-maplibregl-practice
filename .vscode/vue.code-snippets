@@ -1,0 +1,15 @@
+{
+  "vue3 SFC init": {
+    "prefix": "vue",
+    "body": [
+      "<script setup>",
+      "import { $1 } from 'vue';",
+      "</script>",
+      "",
+      "<template>$2</template>",
+      "",
+      "<style lang=\"scss\" scoped>$3</style>",
+    ],
+    "description": "vue3 SFC init",
+  },
+}
