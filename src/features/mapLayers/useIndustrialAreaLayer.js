@@ -6,7 +6,7 @@ import { useLayer } from './useLayer';
  * - `layerId`: 圖層Id
  * - `name`: 圖層名稱
  * - `addToMap`: 加入地圖的函式
- * - `opacity`: 圖層透明度，範圍0~100，預設為 0
+ * - `transparency`: 圖層透明度，範圍0~100，預設為 0
  * - `isVisible`: 圖層是否可見，預設 false
  */
 export function useIndustrialAreaLayer() {

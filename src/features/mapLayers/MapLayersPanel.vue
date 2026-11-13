@@ -30,12 +30,12 @@ function clamp(value, minValue, maxValue) {
   return Math.min(Math.max(value, minValue), maxValue);
 }
 
-function changeOpacity(layer, opacity) {
-  // 設定兩次 opacity.value 是因為要讓數值確實改變而觸發 v-bind 到輸入框的值
+function changeTransparency(layer, transparency) {
+  // 設定兩次 transparency.value 是因為要讓數值確實改變而觸發 v-bind 到輸入框的值
   // 如果只設定一次，可能會導致輸入框存在不合理的數字 (例如打完100之後可以繼續在後面加0)
-  layer.opacity.value = opacity;
-  opacity = clamp(opacity, 0, 100);
-  layer.opacity.value = opacity;
+  layer.transparency.value = transparency;
+  transparency = clamp(transparency, 0, 100);
+  layer.transparency.value = transparency;
 }
 
 function changeVisibility(layer, isVisible) {
@@ -78,12 +78,12 @@ watch(
             </td>
             <td>
               <input
-                class="input-opacity"
+                class="input-transparency"
                 type="number"
                 min="0"
                 max="100"
-                :value="layer.opacity.value"
-                @input="changeOpacity(layer, $event.target.value)"
+                :value="layer.transparency.value"
+                @input="changeTransparency(layer, $event.target.value)"
               />&nbsp;%
             </td>
           </tr>
@@ -108,7 +108,7 @@ watch(
   background-color: #f5f7f9;
 }
 
-.input-opacity {
+.input-transparency {
   width: 50px;
   text-align: center;
 }

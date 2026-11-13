@@ -12,7 +12,7 @@ import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.17.0/dist/maplibre
  * - `layerId`: 圖層Id
  * - `name`: 圖層名稱
  * - `addToMap`: 加入地圖的函式
- * - `opacity`: 圖層透明度，範圍0~100，預設為 0
+ * - `transparency`: 圖層透明度，範圍0~100，預設為 0
  * - `isVisible`: 圖層是否可見，預設 false
  */
 export function useLayer(
@@ -24,10 +24,10 @@ export function useLayer(
   opacityProperties,
 ) {
   let _map = null;
-  const opacity = ref(0);
+  const transparency = ref(0);
   const isVisible = ref(false);
 
-  watch(opacity, _setOpacity);
+  watch(transparency, _setOpacity);
   watch(isVisible, _setVisibility);
 
   /**
@@ -52,7 +52,7 @@ export function useLayer(
 
   function _setOpacity() {
     opacityProperties.forEach((property) => {
-      _map.setPaintProperty(layerId, property, opacity.value / 100);
+      _map.setPaintProperty(layerId, property, 1 - transparency.value / 100);
     });
   }
 
@@ -61,5 +61,5 @@ export function useLayer(
     _map.setLayoutProperty(layerId, 'visibility', visibility);
   }
 
-  return { layerId, name, addToMap, opacity, isVisible };
+  return { layerId, name, addToMap, transparency, isVisible };
 }
