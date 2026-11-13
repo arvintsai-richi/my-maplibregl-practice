@@ -9,11 +9,14 @@ import * as maplibregl from 'https://unpkg.com/maplibre-gl@^6.17.0/dist/maplibre
  * @param {object} layerData 圖層參數
  * @param {string[]} opacityProperties 控制透明度的所有屬性
  * @returns
- * - addToMap: 加入地圖的函式
- * - opacity: 圖層透明度，範圍0~100，預設為 0
- * - isVisible: 圖層是否可見，預設 false
+ * - `layerId`: 圖層Id
+ * - `name`: 圖層名稱
+ * - `addToMap`: 加入地圖的函式
+ * - `opacity`: 圖層透明度，範圍0~100，預設為 0
+ * - `isVisible`: 圖層是否可見，預設 false
  */
 export function useLayer(
+  name,
   sourceId,
   sourceData,
   layerId,
@@ -58,5 +61,5 @@ export function useLayer(
     _map.setLayoutProperty(layerId, 'visibility', visibility);
   }
 
-  return { addToMap, opacity, isVisible };
+  return { layerId, name, addToMap, opacity, isVisible };
 }
